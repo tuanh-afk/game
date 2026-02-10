@@ -1,51 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tech & Talk - Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tech and Talk – Game Menu</title>
   <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#141a33;
+      --panel: rgba(13,20,48,.70);
+      --text:#eef1ff;
+      --muted:#aab3dd;
+      --accent:#b34cff;
+      --accent2:#ff4d6d;
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: Arial, sans-serif;
-      background:#f4f6f8;
-      display:flex;
-      justify-content:center;
-      align-items:center;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
       min-height:100vh;
-      padding:20px;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(179,76,255,.25), transparent 55%),
+        radial-gradient(900px 520px at 85% 25%, rgba(255,77,109,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      display:grid;
+      place-items:center;
+      padding: 22px;
     }
-    .box{
-      width:min(520px, 100%);
-      background:#fff;
-      padding:22px;
-      border-radius:18px;
-      box-shadow:0 12px 30px rgba(0,0,0,.1);
-      text-align:center;
+
+    .wrap{
+      width: min(900px, 96vw);
     }
-    h1{ margin:0 0 10px; }
-    p{ margin:0 0 18px; opacity:.75; }
-    a{
-      display:block;
-      text-decoration:none;
-      padding:14px 16px;
-      margin:10px 0;
-      border-radius:14px;
-      background:#6f42c1;
-      color:#fff;
-      font-weight:700;
-      font-size:16px;
+
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom: 16px;
     }
-    a:hover{ opacity:.95; }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:44px;height:44px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 55%),
+                  linear-gradient(135deg, rgba(179,76,255,.95), rgba(255,77,109,.85));
+      box-shadow: 0 12px 30px rgba(179,76,255,.22);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    h1{margin:0;font-size:18px}
+    p{margin:0;color:var(--muted);font-size:12px}
+
+    .btn{
+      border:none;
+      cursor:pointer;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      font-weight: 700;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      transition: transform .08s ease, background .15s ease;
+      user-select:none;
+    }
+    .btn:hover{background: rgba(255,255,255,.12)}
+    .btn:active{transform: translateY(1px) scale(.99)}
+
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(179,76,255,.95), rgba(255,77,109,.9));
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 820px){
+      .grid{grid-template-columns: 1fr;}
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      padding: 16px;
+    }
+
+    .gameTitle{
+      font-size: 16px;
+      font-weight: 900;
+      margin: 0 0 6px;
+    }
+    .desc{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .hint{
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(238,241,255,.70);
+    }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>🎮 Tech & Talk - Mini Game</h1>
-    <p>Chọn game để chơi</p>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="logo">TT</div>
+        <div>
+          <h1>Tech and Talk – Game Menu</h1>
+          <p>Chọn game để chơi trên điện thoại hoặc laptop</p>
+        </div>
+      </div>
 
-    <a href="memory%20game.html">🎴 Memory Game</a>
-    <a href="sakuraplappy.html">🌸 Sakura Flappy</a>
+      <button class="btn primary" id="btnFullscreen">Fullscreen</button>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="gameTitle">🃏 Memory Flip (Tiếng Nhật)</div>
+        <div class="desc">
+          Lật thẻ tìm cặp giống nhau • Có lưu điểm Top 10 trên máy
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="memory_game.html">Chơi ngay</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="gameTitle">🌸 Sakura Flappy</div>
+        <div class="desc">
+          Flappy Bird phiên bản sakura • Chơi vui, phản xạ nhanh
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="sakuraplappy.html">Chơi ngay</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hint">
+      Tip: Trên laptop hội chợ, bấm Fullscreen để chiếu đẹp hơn.
+    </div>
   </div>
+
+  <script>
+    function isFullscreen(){
+      return !!document.fullscreenElement;
+    }
+
+    async function toggleFullscreen(){
+      try{
+        if(!isFullscreen()){
+          await document.documentElement.requestFullscreen();
+        }else{
+          await document.exitFullscreen();
+        }
+      }catch(e){
+        alert("Trình duyệt chặn Fullscreen. Hãy thử bấm lại.");
+      }
+    }
+
+    document.getElementById("btnFullscreen").addEventListener("click", toggleFullscreen);
+  </script>
 </body>
 </html>
